@@ -51,7 +51,7 @@ CHARACTER SET utf8mb4;
 -- テストユーザー入力
 -- usersテーブル
 INSERT INTO users(user_id, user_name)
-VALUES (1, "テスト1");
+VALUES (1, "テスト1 さん");
 
 -- categoriesテーブル
 INSERT INTO categories(category_id, category_name)
