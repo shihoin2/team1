@@ -58,5 +58,5 @@ INSERT INTO categories(category_id, category_name)
 VALUES (1, "お菓子");
 
 -- itemsテーブル
-INSERT INTO items(item_id user_id, category_id, item_name, like_status)
-VALUES (1, 1, 1, "果汁グミ", "like");
+INSERT INTO items(item_id, user_id, category_id, item_name, like_status)
+VALUES (1, 1, 1, "果汁グミ", 'like');
