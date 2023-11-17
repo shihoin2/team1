@@ -19,7 +19,7 @@ CHARACTER SET utf8mb4;
 -- imagesテーブル作成
 CREATE TABLE images (
   image_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  image_data LONGBLOB NOT NULL,
+  image_data VARCHAR(255) NOT NULL,
   image_name VARCHAR(255) NOT NULL
 )
 CHARACTER SET utf8mb4;
