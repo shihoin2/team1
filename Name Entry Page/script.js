@@ -13,7 +13,7 @@ function registerUser() {
     // ステップ4: 結果を確認
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4) {
-        console.log(xhr.responseText); // レスポンスをコンソールに出力
+        console.log(xhr.responseText); 
         if (xhr.status == 200) {
           alert('登録が成功しました！');
         } else {
