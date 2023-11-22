@@ -41,7 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt->close();
     $mysqli->close();
-    echo 'success';
+
+    // リダイレクト
+    header('Location: NameEntryPage.php'); // 元のフォームページにリダイレクト
+    exit;
 } else {
     http_response_code(400);
     echo 'Invalid request';
