@@ -1,35 +1,30 @@
-"use strict";
+'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('registrationForm');
-  
-  form.addEventListener('submit', function(event) {
-    event.preventDefault(); // フォームのデフォルトの送信を防ぎます
-    
-    const name = document.getElementById('name-input').value;
-    if (name) {
-      alert(`こんにちは、${name}さん！`);
-      // ここに送信処理を書くことができます。例えば:
-      // sendFormData(name);
-    } else {
-      alert('名前を入力してください。');
-    }
-  });
+function registerUser() {
+  // ステップ1: 入力する情報を取得（ここではユーザー名）
+  const name = document.getElementById('name-input').value;
 
-  // 非同期でフォームデータを送信する関数の例
-  function sendFormData(userName) {
-    // ここに非同期通信のコードを書きます。例:
-    /*
-    fetch('your-endpoint', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name: userName }),
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch((error) => console.error('Error:', error));
-    */
+  // ステップ2: POSTに送信先URLを指定（PHPファイルのパス）
+  if (name) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'register.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // ステップ4: 結果を確認
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4) {
+        console.log(xhr.responseText); // レスポンスをコンソールに出力
+        if (xhr.status == 200) {
+          alert('登録が成功しました！');
+        } else {
+          alert('登録中にエラーが発生しました。');
+        }
+      }
+    };
+
+    // ステップ3: PHPにデータを送信
+    xhr.send('name=' + encodeURIComponent(name));
+  } else {
+    alert('名前を入力してください。');
   }
-});
+}
