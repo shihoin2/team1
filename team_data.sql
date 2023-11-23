@@ -19,7 +19,7 @@ CHARACTER SET utf8mb4;
 -- imagesテーブル作成
 CREATE TABLE images (
   image_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  image_data LONGBLOB NOT NULL,
+  image_data VARCHAR(255) NOT NULL,
   image_name VARCHAR(255) NOT NULL
 )
 CHARACTER SET utf8mb4;
@@ -51,12 +51,12 @@ CHARACTER SET utf8mb4;
 -- テストユーザー入力
 -- usersテーブル
 INSERT INTO users(user_id, user_name)
-VALUES (1, "テスト1");
+VALUES (1, "テスト1 さん");
 
 -- categoriesテーブル
 INSERT INTO categories(category_id, category_name)
 VALUES (1, "お菓子");
 
 -- itemsテーブル
-INSERT INTO items(item_id user_id, category_id, item_name, like_status)
-VALUES (1, 1, 1, "果汁グミ", "like");
+INSERT INTO items(item_id, user_id, category_id, item_name, like_status)
+VALUES (1, 1, 1, "果汁グミ", 'like');
