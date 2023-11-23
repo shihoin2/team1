@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>名前一覧</title>
+  <link rel="stylesheet" href="PcProductDetails.css">
+  <link rel="stylesheet" href="relProductDetails.css">
+</head>
+<body>
+  <header>
+    <a href="#"><img class="to_pruducts" src="./img/arrow-left-circle-solid.png"> </a>
+    <div class="clear"></div>
+  </header>
+  <main>
+    <!--以下データベースから取得-->
+    <div class="content">
+    <div class="product_img">
+      <img src="./img/tmp_gumi.jpg">
+    </div>
+
+    <div class="product-wrapper">
+      <div class="product_name">
+        <P class="title">商品名</P>
+        <P>databaseから</P>
+      </div>
+      <p class="line"></p>
+
+      <div class="favorite">
+        <p class="title">好み</p>
+        <p>databaseから</p>
+      </div>
+      <p class="line"></p>
+      <div class="comment">
+      </div>
+    </div>
+    </div>
+  </main>
+  <footer>
+    <a href="#"><img class="delete_product" src="./img/trashCan-brown.png"></a>
+    <div class="clear"></div><!--Javascriptでクリックしたらリストを削除-->
+  </footer>
+  <script src="ProductDetails.js"></script>
+</body>
+</html>
