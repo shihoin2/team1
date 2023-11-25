@@ -3,11 +3,7 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-<<<<<<< HEAD
-    $name = $_POST['name'];
-=======
     $name = $_POST['user_name'];
->>>>>>> 7261f2b65159982a73cb98504fb234dc10077564
 
     if (empty($name)) {
         http_response_code(400);
@@ -16,11 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-<<<<<<< HEAD
-    $mysqli = new mysqli('localhost', 'root', 'Doppo123', 'team1');
-=======
     $mysqli = new mysqli('shiotoukairinoMacBook-Air.local', 'root', 'Doppo123', 'team1');
->>>>>>> 7261f2b65159982a73cb98504fb234dc10077564
     if ($mysqli->connect_error) {
         http_response_code(500);
         $errorMessage = 'データベースに接続できませんでした: ' . $mysqli->connect_error;
@@ -49,23 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt->close();
     $mysqli->close();
-<<<<<<< HEAD
-    echo 'success';
-=======
 
     // リダイレクト
     header('Location: NameEntryPage.php'); // 元のフォームページにリダイレクト
     exit;
->>>>>>> 7261f2b65159982a73cb98504fb234dc10077564
 } else {
     http_response_code(400);
     echo 'Invalid request';
     error_log('Invalid request');
 }
-<<<<<<< HEAD
-
-error_log("これはテストエラーメッセージです");
-?>
-=======
 ?> 
->>>>>>> 7261f2b65159982a73cb98504fb234dc10077564
