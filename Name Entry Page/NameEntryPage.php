@@ -13,10 +13,7 @@ require('dbconnect.php');
 <body>
 
 <header id="header">
-  <div class="header">
-    <button class="home-button">ホーム</button>
-  </div>
-
+  <button class="home-button"><a href="../Name List Page/NameListPage.php"><img src="../img/home.svg" alt="ホーム"></a></button>
 </header>
 
   <div class="registration-form">
@@ -29,6 +26,6 @@ require('dbconnect.php');
     </form>
   </div>
 
-<footer id="footer"></footer>
+<!-- <footer id="footer"></footer> -->
 </body>
 </html> 
