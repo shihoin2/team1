@@ -30,12 +30,5 @@ require('dbconnect.php');
   </div>
 
 <footer id="footer"></footer>
-<!-- <script src="script.js"></script>
-<script>
-  document.getElementById('registrationForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // デフォルトの送信を防止
-    registerUser();
-  });
-</script> -->
 </body>
 </html> 
