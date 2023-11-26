@@ -4,20 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const likeDetails = document.querySelector('.like-section');
   const dislikeDetails = document.querySelector('.dislike-section');
 
-  likeDetails.querySelector('summary').addEventListener('click', (event) => {
-    event.stopPropagation(); // Prevent the click event from reaching the <details> element
+  // likeDetails の toggle イベントを監視
+  likeDetails.addEventListener('toggle', () => {
+    const triangle = likeDetails.querySelector('.triangle img');
+    // 開いているときは初期の90度からさらに90度回転して合計180度にする
+    triangle.style.transform = likeDetails.open ? 'rotate(180deg)' : 'rotate(90deg)';
   });
 
-  dislikeDetails.querySelector('summary').addEventListener('click', (event) => {
-    event.stopPropagation(); // Prevent the click event from reaching the <details> element
-  });
-
-  // Toggle details open/close when clicking anywhere within the summary
-  likeDetails.addEventListener('click', () => {
-    likeDetails.open = !likeDetails.open;
-  });
-
-  dislikeDetails.addEventListener('click', () => {
-    dislikeDetails.open = !dislikeDetails.open;
+  // dislikeDetails の toggle イベントを監視
+  dislikeDetails.addEventListener('toggle', () => {
+    const triangle = dislikeDetails.querySelector('.triangle img');
+    // 同じく開いているときは合計180度にする
+    triangle.style.transform = dislikeDetails.open ? 'rotate(180deg)' : 'rotate(90deg)';
   });
 });
+
