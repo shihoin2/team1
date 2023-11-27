@@ -1,6 +1,6 @@
 <?php
-session_start();
-require('dbconnect.php');
+// session_start();
+require('common/dbconnect.php');
 ?>
 
 <!DOCTYPE html>
@@ -8,13 +8,13 @@ require('dbconnect.php');
 <head>
 <meta charset="UTF-8">
 <title>個人ページ</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="PersonalPage/styles.css">
 </head>
 <body>
 
 <header id="header">
-<button class="home-button"><a href="../Name List Page/NameListPage.php"><img src="../img/home.svg" alt="ホーム"></a></button>
-<button class="add-button"><img src="../img/add.svg" alt="ホーム"></button>
+<button class="home-button"><a href="NameListPage.php"><img src="../img/home.svg" alt="ホーム"></a></button>
+<button class="add-button"><a href="new_preference/index.php"><img src="../img/add.svg" alt="ホーム"></a></button>
 </header>
 
 <div id="app">
@@ -55,7 +55,7 @@ require('dbconnect.php');
         <?php
           foreach ($items as $item) {
               if ($item['like_status'] === 'like') {
-                  echo "<li><a href=\"Product Details\ProductDetails.php?item_id={$item['item_id']}\">{$item['item_name']}</a></li>";
+                  echo "<li><a href=\"ProductDetails.php?item_id={$item['item_id']}\">{$item['item_name']}</a></li>";
                 }
               }
               ?>
@@ -73,7 +73,7 @@ require('dbconnect.php');
       <?php
         foreach ($items as $item) {
             if ($item['like_status'] === 'dislike') {
-                echo "<li><a href=\"Product Details\ProductDetails.php?item_id={$item['item_id']}\">{$item['item_name']}</a></li>";
+                echo "<li><a href=\"ProductDetails.php?item_id={$item['item_id']}\">{$item['item_name']}</a></li>";
               }
             }
             ?>
@@ -86,7 +86,7 @@ require('dbconnect.php');
 </div>
 
 <!-- <footer id="footer"></footer> -->
-<style>
+<!-- <style>
     ul {
         list-style-type: none;
         padding: 0;
@@ -102,8 +102,8 @@ require('dbconnect.php');
     li a:hover {
         text-decoration: underline;
     }
-</style>
+</style> -->
 
-<script src="script.js"></script>
+<script src="PersonalPage/script.js"></script>
 </body>
 </html>

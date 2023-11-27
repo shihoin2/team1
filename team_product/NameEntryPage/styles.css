@@ -1,0 +1,124 @@
+@charset "utf-8";
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+header, footer {
+  background-color: #DFE2D2;
+  text-align: left;
+  width: 100%;
+}
+header {
+  margin-bottom: 30px;  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 10px;
+}
+
+header img {
+  padding: 0 10px;
+}
+
+.home-button img {
+  margin-left: 20px;
+}
+
+.add-button img {
+  margin-right: 20px;
+}
+
+footer {
+  height: 30px;
+  margin-top: auto;
+}
+
+.home-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.home-button, .add-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.home-button img, .add-button img {
+  width: 40px;
+  height: auto;
+}
+
+
+
+.content {
+  text-align: center;
+  margin-top: 60px;
+  display: flex;
+  gap: 50px;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.input-group {
+  text-align: left;
+  width: 80%;
+}
+
+.registration-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.registration-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+.registration-form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 30%;
+  margin-bottom: 20px;
+}
+
+.register-button:hover {
+  background-color: #45a049;
+}
