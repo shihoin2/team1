@@ -17,7 +17,7 @@ require('common/dbconnect.php');
 </header>
 
   <div class="registration-form">
-    <form id="registrationForm" method="POST" action="register.php">
+    <form id="registrationForm" method="POST" action="NameEntryPage/register.php">
       <div class="input-group">
       <label for="user_name">Name</label>
       <input type="text" id="name" name="user_name" placeholder="Enter your name" required>
