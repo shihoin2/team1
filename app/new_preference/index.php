@@ -20,11 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // データベースへの接続
     $pdo = new PDO($dsn, $user, $password, $options);
 
-    // 写真以外のデータをデータベースに保存
-    $sql = "INSERT INTO items (item_name, like_status, description) VALUES (?, ?, ?)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$_POST['productName'], $_POST['preference'], $_POST['comment']]);
-
     // 写真をアップロードしサーバーに保存
     if($_FILES['photo'] != null) {
       $tmp_name = $_FILES['photo']['tmp_name'];
@@ -33,13 +28,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $uploadFile = $uploadDir . $photoName;
 
       if (move_uploaded_file($tmp_name, $uploadFile)) {
-        // 写真のパスをデータベースに保存
-        // TODO(chums424): imagesテーブルとitemsテーブルの紐付け
+        // 写真のパスをimagesテーブルに保存
         $sql = "INSERT INTO images (image_name, image_data) VALUES (?, ?)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$photoName, $uploadFile]);
+        $image_id = $pdo->lastInsertId(); // 追加された画像のIDを取得
       }
     }
+
+    // 写真以外のデータをitemsテーブルに保存（image_idを含む）
+    $sql = "INSERT INTO items (item_name, like_status, description, image_id) VALUES (?, ?, ?, ?)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$_POST['productName'], $_POST['preference'], $_POST['comment'], $image_id]);
+    
   } // エラー処理
     catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
