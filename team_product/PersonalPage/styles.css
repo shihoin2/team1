@@ -1,0 +1,171 @@
+/* Previous styles remain the same */
+@charset "utf-8";
+/* ---------------------------------- */
+/* body */
+/* ---------------------------------- */
+
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+header, footer {
+  background-color: #DFE2D2;
+  text-align: left;
+  width: 100%;
+}
+header {
+  margin-bottom: 30px;  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 10px;
+}
+
+header img {
+  padding: 0 10px;
+}
+
+.add-button img{
+  margin-right: 20px;
+}
+
+footer {
+  height: 30px;
+  margin-top: auto;
+}
+
+
+.home-button, .add-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.home-button img, .add-button img {
+  width: 40px;
+  height: auto;
+}
+
+
+
+.content {
+  text-align: center;
+  margin-top: 60px;
+  display: flex;
+  gap: 50px;
+}
+
+.user-name {
+  font-size: 45px;
+  margin-left: 30px;
+}
+
+
+/* ---------------------------------- */
+/* like */
+/* ---------------------------------- */
+.three img{
+  width: 50px;
+  height: auto;
+}
+
+.like-section, .dislike-section {
+  text-align: left;
+  padding-left: 30px;
+  margin-bottom: 30px;
+}
+
+.like-button, .dislike-button {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 60px;
+  margin-left: 0;
+  padding-left: 0;
+  display: flex;
+}
+
+.like-button img, .dislike-button img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.dislike-button {
+  background-color: #fff;
+  padding: 5px 20px;
+}
+
+.like-list {
+  list-style: none;
+  padding: 0;
+}
+
+.like-list li {
+  background-color: #fff;
+  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+details {
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+summary {
+  padding: 5px 20px;
+  outline: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.like-list, .dislike-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.like-list li, .dislike-list li {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.like-list li::before, .dislike-list li::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: green;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.like-list li:last-child, .dislike-list li:last-child {
+  border-bottom: none;
+}
+
+.triangle img {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
