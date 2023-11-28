@@ -1,16 +1,21 @@
 <?php
-require('dbconnect.php');
+require('../common/dbconnect.php');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// URLからアイテムIDを取得
+$itemId = $_GET['item_id'] ?? '';
 
-    $item_id = isset($_POST['item_id']) ? intval($_POST['item_id']) : 0;
+// アイテムを削除するSQLクエリ
+$deleteQuery = "DELETE FROM items WHERE item_id = :itemId";
+$deleteStmt = $db->prepare($deleteQuery);
+$deleteStmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
 
-
-    $query = "DELETE FROM items WHERE item_id = :item_id";
-
-
-    $stmt = $db->prepare($query);
-    $stmt->bindParam(':item_id', $item_id, PDO::PARAM_INT);
-    $stmt->execute();
+// 削除クエリ実行
+if ($deleteStmt->execute()) {
+  // 削除成功の場合
+  echo json_encode(['success' => true]);
+} else {
+  // 削除失敗の場合
+  echo json_encode(['success' => false]);
 }
-?>
+
+$db = null;

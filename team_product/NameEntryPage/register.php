@@ -12,7 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $mysqli = new mysqli('shiotoukairinoMacBook-Air.local', 'root', 'Doppo123', 'team1');
+    // $mysqli = new mysqli('shiotoukairinoMacBook-Air.local', 'root', 'Doppo123', 'team1');
+    $mysqli = new mysqli('localhost', 'root', '', 'team1');
     if ($mysqli->connect_error) {
         http_response_code(500);
         $errorMessage = 'データベースに接続できませんでした: ' . $mysqli->connect_error;
@@ -43,11 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mysqli->close();
 
     // リダイレクト
-    header('Location: NameEntryPage.php'); // 元のフォームページにリダイレクト
+    header('Location: ../NameEntryPage.php'); // 元のフォームページにリダイレクト
     exit;
 } else {
     http_response_code(400);
     echo 'Invalid request';
     error_log('Invalid request');
 }
-?> 
+?>

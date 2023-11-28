@@ -3,11 +3,14 @@
 // フォームデータの受け取り
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // データベース設定
-  $host = 'db';
+
+  $host = 'localhost';
   $db   = 'team1';
   $user = 'root';
-  $password = 'team@1';
-  $charset = 'utf8mb4';
+  $password = '';
+  // $password = 'team@1';
+  $charset = 'utf8';
+  // $charset = 'utf8mb4';
 
   $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
   $options = [
