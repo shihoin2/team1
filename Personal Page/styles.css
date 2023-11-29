@@ -73,6 +73,10 @@ footer {
   margin-left: 30px;
 }
 
+#app {
+  padding: 0 40px;
+}
+
 
 /* ---------------------------------- */
 /* like */
@@ -86,6 +90,11 @@ footer {
   text-align: left;
   padding-left: 30px;
   margin-bottom: 30px;
+}
+
+.dislike-section {
+  margin: 0 auto; /* 左右のマージンを自動に設定して中央に配置 */
+  width: 100%; /* 全幅を取るか、必要に応じて最大幅を設定 */
 }
 
 .like-button, .dislike-button {
@@ -169,3 +178,15 @@ summary::-webkit-details-marker {
   transform: rotate(90deg);
   transition: transform 0.3s ease;
 }
+
+
+/* ---------------------------------- */
+/* レスポンシブ */
+/* ---------------------------------- */
+
+  @media (max-width: 750px) {
+    .content {
+      flex-direction: column; /* 子要素を縦に並べる */
+      align-items: flex-start; /* 子要素を左寄せにする */
+    }
+  }
