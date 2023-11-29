@@ -1,16 +1,65 @@
-<?php
+<!-- <?php
 
+// // フォームデータの受け取り
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//   // データベース設定
+//   $host = 'localhost';
+//   $db   = 'team1';
+//   $user = 'root';
+//   $password = '';
+//   $charset = 'utf8mb4';
+
+//   $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+//   $options = [
+//       PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+//       PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+//       PDO::ATTR_EMULATE_PREPARES   => false,
+//   ];
+//   $userId = $_GET['user_id'] ?? null;
+//   try {
+//     // データベースへの接続
+//     $pdo = new PDO($dsn, $user, $password, $options);
+
+//     // 写真以外のデータをデータベースに保存
+//     $sql = "INSERT INTO items (item_name, like_status, description) VALUES (?, ?, ?)";
+//     $stmt = $pdo->prepare($sql);
+//     $stmt->execute([$_POST['productName'], $_POST['preference'], $_POST['comment']]);
+
+//     // 写真をアップロードしサーバーに保存
+//     if($_FILES['photo'] != null) {
+//       $tmp_name = $_FILES['photo']['tmp_name'];
+//       $photoName = basename($_FILES['photo']['name']);
+//       $uploadDir = '../photos/';
+//       $uploadFile = $uploadDir . $photoName;
+
+//       if (move_uploaded_file($tmp_name, $uploadFile)) {
+//         // 写真のパスをデータベースに保存
+//         // TODO(chums424): imagesテーブルとitemsテーブルの紐付け
+//         $sql = "INSERT INTO images (image_name, image_data) VALUES (?, ?)";
+//         $stmt = $pdo->prepare($sql);
+//         $stmt->execute([$photoName, $uploadFile]);
+//       }
+//     }
+//   } // エラー処理
+//     catch (\PDOException $e) {
+//     throw new \PDOException($e->getMessage(), (int)$e->getCode());
+//   }
+// }
+?> -->
+
+<?php
+// require('../common/dbconnect.php');
+// $userId = $_GET['user_id'] ?? '';
+  $userId = $_GET['user_id'] ?? null;
+  // echo $userId;
 // フォームデータの受け取り
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // データベース設定
-
   $host = 'localhost';
   $db   = 'team1';
   $user = 'root';
   $password = '';
-  // $password = 'team@1';
-  $charset = 'utf8';
-  // $charset = 'utf8mb4';
+  $charset = 'utf8mb4';
 
   $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
   $options = [
@@ -18,15 +67,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
       PDO::ATTR_EMULATE_PREPARES   => false,
   ];
-
+  // $userId = $_GET['user_id'] ?? '';
+  // $userId = $_GET['user_id'] ?? 'null';
+  // $userId = 1;
   try {
     // データベースへの接続
     $pdo = new PDO($dsn, $user, $password, $options);
 
     // 写真以外のデータをデータベースに保存
-    $sql = "INSERT INTO items (item_name, like_status, description) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO items (user_id, item_name, like_status, description, image_id) VALUES (?, ?, ?, ?, ?)";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$_POST['productName'], $_POST['preference'], $_POST['comment']]);
+    $stmt->execute([$userId, $_POST['productName'], $_POST['preference'], $_POST['comment'], null]);
+
+    $itemId = $pdo->lastInsertId();
 
     // 写真をアップロードしサーバーに保存
     if($_FILES['photo'] != null) {
@@ -41,6 +94,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO images (image_name, image_data) VALUES (?, ?)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$photoName, $uploadFile]);
+
+        $imageId = $pdo->lastInsertId();
+        $updateSql = "UPDATE items SET image_id = ? WHERE item_id = ?";
+        $updateStmt = $pdo->prepare($updateSql);
+        $updateStmt->execute([$imageId, $itemId]);
       }
     }
   } // エラー処理
@@ -49,6 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -61,13 +120,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
   <div class="navigation">
-    <a href="../NameListPage.php"><button id="backButton" class="back-button">
-      <i class="fa-solid fa-arrow-rotate-left" style="color: #472e3a;"></i>
-    </button></a>
+    <button id="backButton" class="back-button">
+      <a href="../PersonalPage.php?user_id=<?php echo $userId;?>"><i class="fa-solid fa-arrow-rotate-left" style="color: #000000;"></i></a>
+    </button>
   </div>
-
   <div class="form-container">
-    <form action="index.php" method="post" enctype="multipart/form-data">
+    <!-- <form action="index.php" method="post" enctype="multipart/form-data"> -->
+    <form action="index.php?user_id=<?php echo $userId; ?>" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="productName">商品名</label>
           <input type="text" id="productName" name="productName">

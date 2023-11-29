@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>商品情報</title>
-  <link rel="stylesheet" href="ProductDetails/PcProductDetails.css">
-  <link rel="stylesheet" href="ProductDetails/relProductDetails.css">
-  <script src="https://kit.fontawesome.com/4302d0f98e.js" crossorigin="anonymous"></script>
-</head>
-<body>
 <?php
 require('common/dbconnect.php');
 
@@ -26,14 +15,31 @@ $itemStmt = $db->prepare($itemQuery);
 $userStmt = $db->prepare($userQuery);
 
 $itemStmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
-$userStmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
+// $userStmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
+$userStmt->bindParam(':itemId', $userId, PDO::PARAM_INT);
 
 $itemStmt->execute();
 $userStmt->execute();
 
 $item = $itemStmt->fetch(PDO::FETCH_ASSOC);
 $user = $userStmt->fetch(PDO::FETCH_ASSOC);
+
+
 ?>
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品情報</title>
+  <link rel="stylesheet" href="ProductDetails/PcProductDetails.css">
+  <link rel="stylesheet" href="ProductDetails/relProductDetails.css">
+  <script src="https://kit.fontawesome.com/4302d0f98e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
   <header>
     <?php
     echo "<a href=\"PersonalPage.php?user_id={$user['user_id']}\" ><i class=\"fa-solid fa-rotate-left\" style=\"color: #472e3a;\"></i></a>";
@@ -68,13 +74,26 @@ echo "<div class=\"comment\">{$item['description']}</div></div>";
 
   </main>
   <footer>
-  <script>
-  let itemId = <?php echo json_encode($itemId, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP); ?>;
-</script>
-    <a href="#" id="delete"><i class="fa-solid fa-trash-can delete_product" style="color: #472e3a;"></i></a>
-    <div class="clear"></div>
-  </footer>
 
+  <form id="deleteForm" action="ProductDetails/delete.php" method="post">
+  <input type="hidden" name="itemId" value="<?php echo $itemId; ?>">
+  <i id="deleteIcon" class="fa-solid fa-trash-can" style="color: #472e3a; cursor: pointer;"></i>
+</form>
+    <!-- <form id="deleteForm" action="ProductDetails/delete.php" method="post">
+    <input type="hidden" name="itemId" value="<?php echo $itemId; ?>">
+    <button type="submit" class="delete_product"><i class="fa-solid fa-trash-can" style="color: #472e3a;"></i></button>
+  </form> -->
+
+  <script>
+  // JavaScriptでアイコンをクリックしたときにフォームをサブミットする
+  document.getElementById('deleteIcon').addEventListener('click', function() {
+    document.getElementById('deleteForm').submit();
+  });
+</script>
+
+    <div class="clear"></div>
+
+  </footer>
   <script src="ProductDetails/ProductDetails.js"></script>
 </body>
 </html>
