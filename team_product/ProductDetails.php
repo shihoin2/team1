@@ -44,32 +44,6 @@ $user = $userStmt->fetch(PDO::FETCH_ASSOC);
   <div class="content">
     <div class="product_img">
     <?php
-// require('dbconnect.php');
-
-// // URLからアイテムIDを取得
-// $itemId = $_GET['item_id'] ?? '';
-// // アイテム情報を取得するSQLクエリ
-// $itemQuery = "SELECT items.item_name, items.like_status, items.description, images.image_data
-//               FROM items
-//               LEFT JOIN images ON items.image_id = images.image_id
-//               WHERE items.item_id = :itemId";
-
-// $itemStmt = $db->prepare($itemQuery);
-// $itemStmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
-// $itemStmt->execute();
-
-// $item = $itemStmt->fetch(PDO::FETCH_ASSOC);
-
-// もし$itemがfalse（取得に失敗）ならエラーメッセージを表示
-// if ($item === false) {
-//     die('Item not found or database error.');
-// }
-
-// if (!empty($item['image_data'])) {
-//   echo "{$item['image_data']}</div>";
-// }  else {
-//   echo "</div>";
-// }
 
 // 画像を表示
 if (empty($item)) {
@@ -77,7 +51,6 @@ if (empty($item)) {
 }
 
 $imageData = $item['image_data'];
-echo $imageData;
 echo '<div class="img"><img src="' . $imageData . '" alt="画像"></div>';
 
 
