@@ -1,6 +1,26 @@
+<?php
+// session_start();
+require('common/dbconnect.php');
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>個人ページ</title>
+<link rel="stylesheet" href="PersonalPage/styles.css">
+</head>
+<body>
+
+<header id="header">
+<button class="home-button"><a href="NameListPage.php"><img src="../img/home.svg" alt="ホーム"></a></button>
+<button class="add-button"><a href="new_preference/index.php"><img src="../img/add.svg" alt="ホーム"></a></button>
+</header>
+
+<div id="app">
+    <!-- ユーザー名を動的に表示 -->
 
 <?php
-require('common/dbconnect.php');
   // URLからユーザーIDを取得
   $userId = $_GET['user_id'] ?? '';
   // ユーザーIDからユーザー名を取得
@@ -19,26 +39,6 @@ require('common/dbconnect.php');
   // 結果を取得
   $user = $userNameStmt->fetch(PDO::FETCH_ASSOC);
   $items = $itemsStmt->fetchAll(PDO::FETCH_ASSOC);
-  ?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<title>個人ページ</title>
-<link rel="stylesheet" href="PersonalPage/styles.css">
-</head>
-<body>
-
-<header id="header">
-<button class="home-button"><a href="NameListPage.php"><img src="../img/home.svg" alt="ホーム"></a></button>
-<button class="add-button"><a href="new_preference/index.php?user_id=<?php echo $userId; ?>"><img src="../img/add.svg" alt="ホーム"></a></button>
-
-
-</header>
-
-<div id="app">
-
-  <?PHP
   // ユーザー名を表示
   echo "<div class='user-name'>{$user['user_name']}</div>";
   ?>

@@ -36,14 +36,6 @@ main {
   padding-bottom: 30px;
 }
 
-form {
-  border: none; /* 枠線を非表示にする */
-  background: none; /* 背景色も非表示にする */
-  padding: 0; /* 余白をなくす */
-  cursor: pointer; /* ボタンのカーソルを設定 */
-}
-
-
 .clear {
   clear: left;
 }
@@ -58,6 +50,10 @@ form {
   padding: 20px;
 }
 
+/* .content {
+  padding: 0px 50px;
+
+} */
 
 .product_img img {
   height: 100%;
