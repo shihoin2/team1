@@ -62,10 +62,12 @@ footer {
 
 
 .content {
-  text-align: center;
-  margin-top: 60px;
   display: flex;
-  gap: 50px;
+  flex-direction: row; /* 並び順を横並びに指定 */
+  justify-content: space-around; /* likeとdislikeを画面の両端に配置 */
+  align-items: start; /* アイテムを上端揃えに */
+  margin-top: 60px;
+  gap: 50px; /* likeとdislikeの間隔を調整 */
 }
 
 .user-name {
@@ -83,6 +85,7 @@ footer {
 }
 
 .like-section, .dislike-section {
+  width: 45%; /* セクションの幅を指定 */
   text-align: left;
   padding-left: 30px;
   margin-bottom: 30px;
@@ -90,7 +93,7 @@ footer {
 
 .like-button, .dislike-button {
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   font-size: 60px;
   margin-left: 0;
   padding-left: 0;
@@ -145,11 +148,11 @@ summary::-webkit-details-marker {
   padding: 10px 20px;
   border-bottom: 1px solid #ddd;
   position: relative;
-  margin-bottom: 5px;
+  margin-bottom: 30px;
   border-radius: 5px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  margin-left: 50px;
 }
 
 .like-list li::before, .dislike-list li::before {
@@ -169,3 +172,31 @@ summary::-webkit-details-marker {
   transform: rotate(90deg);
   transition: transform 0.3s ease;
 }
+
+/* ---------------------------------- */
+/* レスポンシブ */
+/* ---------------------------------- */
+
+/* 既存のスタイルはそのままに、レスポンシブ対応を追加 */
+
+@media screen and (max-width: 768px) {
+  .content {
+    flex-direction: column; /* 画面サイズが768px以下の場合、縦並びにする */
+    gap: 20px; /* 縦並びの際の間隔を設定 */
+  }
+
+  .like-section, .dislike-section {
+    width: 100%; /* 画面幅いっぱいに広げる */
+    margin-bottom: 20px; /* 下のマージンを調整 */
+  }
+
+  .like-button, .dislike-button {
+    font-size: 40px; /* アイコンのサイズを小さくする */
+  }
+
+  .like-button img, .dislike-button img {
+    width: 40px; /* アイコンの画像サイズを調整 */
+  }
+
+}
+

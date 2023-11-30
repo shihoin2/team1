@@ -53,15 +53,24 @@ $item = $itemStmt->fetch(PDO::FETCH_ASSOC);
 // $item = $itemStmt->fetch(PDO::FETCH_ASSOC);
 
 // もし$itemがfalse（取得に失敗）ならエラーメッセージを表示
-if ($item === false) {
-    die('Item not found or database error.');
+// if ($item === false) {
+//     die('Item not found or database error.');
+// }
+
+// if (!empty($item['image_data'])) {
+//   echo "{$item['image_data']}</div>";
+// }  else {
+//   echo "</div>";
+// }
+
+// 画像を表示
+if (empty($item)) {
+  header("Status: 500 Internal Server Error");
 }
 
-if (!empty($item['image_data'])) {
-  echo "{$item['image_data']}</div>";
-}  else {
-  echo "</div>";
-}
+$imageData = $item['image_data'];
+echo '<div class="img"><img src="' . $imageData . '" alt="画像"></div>';
+
 
 echo "<div class=\"product-wrapper\">";
 echo "<div class=\"product_name\">";
