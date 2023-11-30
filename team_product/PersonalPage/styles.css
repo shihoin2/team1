@@ -25,7 +25,7 @@ header, footer {
   width: 100%;
 }
 header {
-  margin-bottom: 30px;  
+  margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -199,4 +199,3 @@ summary::-webkit-details-marker {
   }
 
 }
-
