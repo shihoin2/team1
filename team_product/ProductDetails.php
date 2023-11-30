@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>商品情報</title>
-  <link rel="stylesheet" href="ProductDetails/PcProductDetails.css">
-  <link rel="stylesheet" href="ProductDetails/relProductDetails.css">
-  <script src="https://kit.fontawesome.com/4302d0f98e.js" crossorigin="anonymous"></script>
-</head>
-<body>
 <?php
 require('common/dbconnect.php');
 
@@ -34,6 +23,19 @@ $userStmt->execute();
 $item = $itemStmt->fetch(PDO::FETCH_ASSOC);
 $user = $userStmt->fetch(PDO::FETCH_ASSOC);
 ?>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品情報</title>
+  <link rel="stylesheet" href="ProductDetails/PcProductDetails.css">
+  <!-- <link rel="stylesheet" href="ProductDetails/relProductDetails.css"> -->
+  <script src="https://kit.fontawesome.com/4302d0f98e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
   <header>
   <?php
     echo "<a href=\"PersonalPage.php?user_id={$user['user_id']}\" ><i class=\"fa-solid fa-rotate-left\" style=\"color: #472e3a;\"></i></a>";
@@ -51,7 +53,8 @@ if (empty($item)) {
 }
 
 $imageData = $item['image_data'];
-echo '<div class="img"><img src="' . $imageData . '" alt="画像"></div>';
+// echo '<div class="img"><img src="' . $imageData . '" alt="画像"></div>';
+echo '<img src="' . $imageData . '" alt="画像"></div>';
 
 
 echo "<div class=\"product-wrapper\">";
@@ -67,38 +70,6 @@ $db = null;
 ?>
 
 
-
-
-<!-- //  <?php
-//
-//require('dbconnect.php');
-//    // itemsテーブルと関連するテーブルからデータを取得するクエリ
-//    $query = "SELECT items.item_name, items.like_status, items.description, images.image_data
-//              FROM items
-//              LEFT JOIN images ON items.image_id = images.image_id
-//              WHERE items.item_id = :item_id";
-//
-//
-//    // クエリ実行
-//    $stmt = $db->prepare($query);
-//    $stmt->bindParam(':item_id', $item_id, PDO::PARAM_INT);
-//    $stmt->execute();
-//
-//    // 結果を取得
-//    $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
-//
-//    // 取得したデータを表示
-//    foreach ($items as $item) {
-//        echo "<img src=\"" . $item['image_data'] . "\"></div>";
-//        echo "<div class=\"product-wrapper\">";
-//        echo "<div class=\"product_name\">";
-//        echo "<P class=\"title\">商品名</P><P>" . $item['item_name'] . "</P></div>";
-//        echo "<p class=\"line\"></p>";
-//        echo "<div class=\"favorite\"><p class=\"title\">好み</p><p>" . $item['like_status'] . "</p></div>";
-//        echo "<p class=\"line\"></p>";
-//        echo "<div class=\"comment\">" . $item['description'] . "</div></div></div>";
-//    }
-// ?>-->
 
   </main>
   <footer>
