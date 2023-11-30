@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>商品情報</title>
-  <link rel="stylesheet" href="PcProductDetails.css">
-  <link rel="stylesheet" href="relProductDetails.css">
+  <link rel="stylesheet" href="ProductDetails/PcProductDetails.css">
+  <link rel="stylesheet" href="ProductDetails/relProductDetails.css">
   <script src="https://kit.fontawesome.com/4302d0f98e.js" crossorigin="anonymous"></script>
 </head>
 <body>
