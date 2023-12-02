@@ -184,9 +184,27 @@ summary::-webkit-details-marker {
 /* レスポンシブ */
 /* ---------------------------------- */
 
-  @media (max-width: 750px) {
-    .content {
-      flex-direction: column; /* 子要素を縦に並べる */
-      align-items: flex-start; /* 子要素を左寄せにする */
-    }
+/* 既存のスタイルはそのままに、レスポンシブ対応を追加 */
+
+@media screen and (max-width: 768px) {
+  .content {
+    flex-direction: column; /* 画面サイズが768px以下の場合、縦並びにする */
+    gap: 20px; /* 縦並びの際の間隔を設定 */
   }
+
+  .like-section, .dislike-section {
+    width: 100%; /* 画面幅いっぱいに広げる */
+    margin-bottom: 20px; /* 下のマージンを調整 */
+  }
+
+  .like-button, .dislike-button {
+    font-size: 40px; /* アイコンのサイズを小さくする */
+  }
+
+  .like-button img, .dislike-button img {
+    width: 40px; /* アイコンの画像サイズを調整 */
+  }
+  .like-list li, .dislike-list li {
+    margin-left: 50px;
+}
+}

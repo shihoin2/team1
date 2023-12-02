@@ -173,10 +173,6 @@ summary::-webkit-details-marker {
   transition: transform 0.3s ease;
 }
 
-/* ---------------------------------- */
-/* レスポンシブ */
-/* ---------------------------------- */
-
 /* 既存のスタイルはそのままに、レスポンシブ対応を追加 */
 
 @media screen and (max-width: 768px) {
@@ -197,5 +193,7 @@ summary::-webkit-details-marker {
   .like-button img, .dislike-button img {
     width: 40px; /* アイコンの画像サイズを調整 */
   }
-
+  .like-list li, .dislike-list li {
+    margin-left: 50px;
+}
 }
