@@ -4,18 +4,24 @@ require('common/dbconnect.php');
 // URLからアイテムIDを取得
 $itemId = $_GET['item_id'] ?? '';
 // アイテム情報を取得するSQLクエリ
-$itemQuery = "SELECT items.item_name, items.like_status, items.description, images.image_data
+// $itemQuery = "SELECT items.item_name, items.like_status, items.description, images.image_data
+//               FROM items
+//               LEFT JOIN images ON items.image_id = images.image_id
+//               WHERE items.item_id = :itemId";
+$itemQuery = "SELECT items.item_name, items.like_status, items.description, images.image_data, items.user_id as item_user_id
               FROM items
               LEFT JOIN images ON items.image_id = images.image_id
               WHERE items.item_id = :itemId";
 
 $userQuery = "SELECT user_id, user_name FROM users";
 
+// $userQuery = "SELECT user_id, user_name FROM users";
+
 $itemStmt = $db->prepare($itemQuery);
 $userStmt = $db->prepare($userQuery);
 
 $itemStmt->bindParam(':itemId', $itemId, PDO::PARAM_INT);
-$userStmt->bindParam(':itemId', $userId, PDO::PARAM_INT);
+// $userStmt->bindParam(':itemId', $userId, PDO::PARAM_INT);
 
 $itemStmt->execute();
 $userStmt->execute();
@@ -29,16 +35,19 @@ $user = $userStmt->fetch(PDO::FETCH_ASSOC);
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>商品情報</title>
-  <link rel="stylesheet" href="ProductDetails/PcProductDetails.css">
+  <title>Detail</title>
+  <link rel="stylesheet" href="ProductDetails/ProductDetails.css">
+  <!-- <link rel="stylesheet" href="ProductDetails/ProductDetails2.css"> -->
   <!-- <link rel="stylesheet" href="ProductDetails/relProductDetails.css"> -->
+  <!-- <link rel="stylesheet" href="ProductDetails/PcProductDetails.css"> -->
   <script src="https://kit.fontawesome.com/4302d0f98e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
   <header>
   <?php
-    echo "<a href=\"PersonalPage.php?user_id={$user['user_id']}\" ><i class=\"fa-solid fa-rotate-left\" style=\"color: #472e3a;\"></i></a>";
+    // echo "<a href=\"PersonalPage.php?user_id={$user['user_id']}\" ><i class=\"fa-solid fa-rotate-left\" style=\"color: #472e3a;\"></i></a>";
+    echo "<a href=\"PersonalPage.php?user_id={$item['item_user_id']}\"><i class=\"fa-solid fa-rotate-left\" style=\"color: #472e3a;\"></i></a>";
     ?>
     <div class="clear"></div>
   </header>
@@ -52,9 +61,13 @@ if (empty($item)) {
   header("Status: 500 Internal Server Error");
 }
 
-$imageData = $item['image_data'];
+$imageData = !empty($item['image_data']) ? $item['image_data'] : 'photos/noimage.png';
+
 // echo '<div class="img"><img src="' . $imageData . '" alt="画像"></div>';
 echo '<img src="' . $imageData . '" alt="画像"></div>';
+
+// $imageData = $item['image_data'];
+// echo '<img src="' . $imageData . '" alt="画像"></div>';
 
 
 echo "<div class=\"product-wrapper\">";

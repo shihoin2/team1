@@ -6,10 +6,11 @@ body, html {
 }
 
 body {
+  width: 100%;
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: '游明朝','Yu Mincho',YuMincho,'Hiragino Mincho Pro',serif!important;
   background-color: #fff;
-  color: #333;
+  color: #472e3a;
   display: flex;
   flex-direction: column;
 }
@@ -20,7 +21,7 @@ header, footer {
   width: 100%;
 }
 header {
-  margin-bottom: 30px;  
+  margin-bottom: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;

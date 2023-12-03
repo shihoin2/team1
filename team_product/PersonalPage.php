@@ -25,19 +25,20 @@ require('common/dbconnect.php');
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>個人ページ</title>
-<link rel="stylesheet" href="PersonalPage/styles.css">
+<title>Personal Page</title>
+<link rel="stylesheet" href="PersonalPage/newstyles2.css">
+<script src="https://kit.fontawesome.com/4302d0f98e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header id="header">
+
 <button class="home-button"><a href="NameListPage.php"><img src="../img/home.svg" alt="ホーム"></a></button>
 <button class="add-button"><a href="index.php?user_id=<?php echo $userId; ?>"><img src="../img/add.svg" alt="ホーム"></a></button>
+
 </header>
 
 <div id="app">
-    <!-- ユーザー名を動的に表示 -->
-
 <?php
   // ユーザー名を表示
   echo "<div class='user-name'>{$user['user_name']}</div>";

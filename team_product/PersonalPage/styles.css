@@ -12,15 +12,15 @@ body, html {
 
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: '游明朝','Yu Mincho',YuMincho,'Hiragino Mincho Pro',serif!important;
   background-color: #fff;
-  color: #333;
+  color: #472e3a;
   display: flex;
   flex-direction: column;
 }
 
 header, footer {
-  background-color: #DFE2D2;
+  background-color: #F4E7DF;
   text-align: left;
   width: 100%;
 }
@@ -73,6 +73,7 @@ footer {
 .user-name {
   font-size: 45px;
   margin-left: 30px;
+  color: #472e3a;
 }
 
 
