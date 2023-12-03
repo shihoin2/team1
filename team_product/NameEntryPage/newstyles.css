@@ -1,0 +1,115 @@
+@charset "utf-8";
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  font-family: '游明朝','Yu Mincho',YuMincho,'Hiragino Mincho Pro',serif!important;
+  background-color: #fff;
+  color: #472e3a;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  /* background-color: #DFE2D2; */
+  background-color: #F4E7DF;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+main {
+  height: 100%;
+  /* padding-bottom: 30px; */
+}
+footer {
+  padding: 10px 10px;
+}
+
+header img {
+  padding: 0 10px;
+}
+
+.home-button img {
+  margin-left: 20px;
+}
+
+.home-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.home-button img {
+  width: 40px;
+  height: auto;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-group {
+  text-align: left;
+  width: 80%;
+}
+
+.registration-form label {
+  font-size: 30px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.registration-form input {
+  font-family:  '游明朝','Yu Mincho',YuMincho,'Hiragino Mincho Pro',serif!important;
+  font-size: 20px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+.registration-form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register-button {
+  background-color: #009177;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.register-button:hover {
+  background-color: #32a792;
+}
+
+@media(max-width: 670px) {
+  .registration-form {
+    margin: 0px 30px;
+  }
+}
+@media(min-width: 670px) {
+  .registration-form {
+    margin: 0px 80px;
+  }
+}

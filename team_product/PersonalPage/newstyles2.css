@@ -1,0 +1,206 @@
+/* Previous styles remain the same */
+@charset "utf-8";
+/* ---------------------------------- */
+/* body */
+/* ---------------------------------- */
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  font-family: '游明朝','Yu Mincho',YuMincho,'Hiragino Mincho Pro',serif!important;
+  background-color: #fff;
+  color: #472e3a;
+  display: flex;
+  flex-direction: column;
+}
+
+/* header, footer {
+
+  text-align: left;
+
+} */
+header {
+  width: 100%;
+  background-color: #F4E7DF;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 10px;
+}
+header img {
+  padding: 0 10px;
+}
+
+.add-button img{
+  margin-right: 10px;
+}
+
+footer {
+  height: 30px;
+  margin-top: auto;
+}
+
+
+.home-button, .add-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.home-button img, .add-button img {
+  width: 40px;
+  height: auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: start;
+  /* padding: 0px 80px; */
+  margin-top: 30px;
+  gap: 50px;
+}
+
+.user-name {
+  /* font-size: 45px; */
+  font-size: 30px;
+  margin-left: 60px;
+  color: #472e3a;
+}
+
+
+/* ---------------------------------- */
+/* like */
+/* ---------------------------------- */
+.three img{
+  width: 50px;
+  height: auto;
+}
+
+.like-section, .dislike-section {
+  width: 45%; /* セクションの幅を指定 */
+  text-align: left;
+  /* padding-left: 30px; */
+  margin-bottom: 30px;
+}
+
+.like-button, .dislike-button {
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: 30px;
+  margin-left: 0;
+  padding-left: 0;
+  display: flex;
+}
+
+.like-button img, .dislike-button img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.dislike-button {
+  background-color: #fff;
+  padding: 5px 20px;
+}
+
+.like-list {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #472e3a;
+}
+
+details {
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+summary {
+  padding: 5px 20px;
+  outline: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.like-list, .dislike-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.like-list li, .dislike-list li {
+  background-color: #fff;
+  font-size: 20px;
+  border-radius: 5px;
+
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.like-list li::before, .dislike-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background-color: #009177;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.like-list li:last-child, .dislike-list li:last-child {
+  border-bottom: none;
+}
+
+.triangle img {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+/* ---------------------------------- */
+/* レスポンシブ */
+/* ---------------------------------- */
+
+@media screen and (max-width: 768px) {
+  .content {
+    flex-direction: column; /* 画面サイズが768px以下の場合、縦並びにする */
+    gap: 20px; /* 縦並びの際の間隔を設定 */
+    padding: 0px 30px;
+  }
+
+  .like-section, .dislike-section {
+    width: 100%; /* 画面幅いっぱいに広げる */
+    margin-bottom: 20px; /* 下のマージンを調整 */
+  }
+  .user-name {
+    margin-left: 30px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .content {
+    padding: 0px 80px;
+  }
+  .user-name {
+    margin-left: 60px;
+  }
+}

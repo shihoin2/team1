@@ -1,0 +1,164 @@
+@charset "utf-8";
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  margin: 0px;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  font-family: '游明朝','Yu Mincho',YuMincho,'Hiragino Mincho Pro',serif!important;
+  background-color: #fff;
+  color: #472e3a;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  background-color: #F4E7DF;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+main {
+  height: 100%;
+  /* padding-bottom: 30px; */
+}
+footer {
+  padding: 10px 10px;
+}
+.clear {
+  clear: left;
+}
+.content {
+  height: 100%;
+}
+.product_img {
+  text-align: center;
+  display: inline-block;
+  padding: 20px;
+}
+
+/* .product_img img {
+  height: 100%;
+  width: auto;
+} */
+
+.product-wrapper {
+  font-size: 20px;
+}
+.product-wrapper p{
+  margin: 0px;
+}
+
+.product_name p {
+  display: inline-block;
+}
+.favorite {
+  padding-top: 10px;
+}
+.favorite p {
+  display: inline-block;
+}
+.title {
+  width: 80px;
+  margin: 0px 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.line {
+  /* border-bottom: 1px solid #472e3a; */
+  border-bottom: 1.5px solid #ccc;
+  margin: 0px;
+  position: relative;
+  bottom: 5px;
+}
+
+.comment {
+  /* border: 1px solid #472e3a; */
+  border: 1.5px solid #ccc;
+  border-radius: 5px;
+  margin-top: 50px;
+  padding: 10px;
+  height: 50%;
+}
+
+.fa-solid {
+  font-size: 40px;
+  margin: 0px 20px;
+}
+
+@media(min-width:670px){
+  .content {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 80px;
+    /* margin: 20px 80px; */
+  }
+  .product_img {
+    width: 45%;
+    /* height: 100%; */
+    align-items: center;
+    display: flex;
+  }
+  .product_img img {
+    height: auto;
+    width: 100%;
+    margin: auto;
+    /* object-fit: scale-down; */
+  }
+  .product-wrapper {
+    width: 45%;
+    margin: 20px 0px;
+  }
+  .product_name {
+    padding-top: 40px;
+  }
+  .comment {
+    margin-top: 50px;
+    padding: 10px;
+    height: 50%;
+  }
+  .favorite {
+    padding-top: 10px;
+  }
+}
+
+@media(max-width:670px){
+.content {
+    padding: 0px 30px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+  }
+.product_img {
+  text-align: center;
+  height: 45%;
+  /* width: auto; */
+}
+.product_img img {
+  height: 100%;
+  width: 100%;
+  object-fit: scale-down;
+}
+
+.product_name {
+  padding-top: 0px;
+}
+.comment {
+  /* border: 1px solid #472e3a; */
+  margin-top: 15px;
+  padding: 10px;
+  height: 100px;
+}
+.favorite {
+  padding-top: 0px;
+}
+}

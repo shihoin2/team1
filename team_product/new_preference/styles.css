@@ -4,10 +4,13 @@ body, html {
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #fff;
-  color: #333;
+  width: 100%;
   margin: 0;
+  font-family: '游明朝','Yu Mincho',YuMincho,'Hiragino Mincho Pro',serif!important;
+  background-color: #fff;
+  color: #472e3a;
+  display: flex;
+  flex-direction: column;
 }
 
 .navigation {
@@ -110,4 +113,3 @@ body {
 .submit-button:hover {
   background-color: #45a049;
 }
-

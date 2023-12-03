@@ -12,7 +12,7 @@ body, html {
 body {
   margin: 0px;
   font-family: 'Arial', sans-serif;
-  background-color: #f0f0f0;
+  background-color: #fff;
   color: #472e3a;
   display: flex;
   flex-direction: column;

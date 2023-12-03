@@ -3,12 +3,6 @@
 $userId = $_GET['user_id'] ?? null;
 // フォームデータの受け取り
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // データベース設定
-  // $host = 'db';
-  // $db   = 'team1';
-  // $user = 'root';
-  // $password = 'team@1';
-  // $charset = 'utf8mb4';
 
   $host = 'localhost';
   $db   = 'team1';
@@ -30,7 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 写真をアップロードしサーバーに保存
     if($_FILES['photo'] != null) {
       $tmp_name = $_FILES['photo']['tmp_name'];
-      $photoName = basename($_FILES['photo']['name']);
+      // $photoName = basename($_FILES['photo']['name']);
+      $photoName = uniqid() . '_' . basename($_FILES['photo']['name']);
       $uploadDir = 'photos/';
       $uploadFile = $uploadDir . $photoName;
 
@@ -41,7 +36,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute([$photoName, $uploadFile]);
         $image_id = $pdo->lastInsertId(); // 追加された画像のIDを取得
       }
+      // var_dump($photoName);
     }
+
 
     // 写真以外のデータをitemsテーブルに保存（image_idを含む）
     $sql = "INSERT INTO items (user_id, item_name, like_status, description, image_id) VALUES (?, ?, ?, ?, ?)";
@@ -60,38 +57,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>商品登録</title>
-  <link rel="stylesheet" href="new_preference/styles.css">
+  <title>Product Registration</title>
+  <!-- <link rel="stylesheet" href="new_preference/styles.css"> -->
+  <!-- <link rel="stylesheet" href="new_preference/newstyles.css"> -->
+  <link rel="stylesheet" href="new_preference/newstyles2.css">
   <script src="https://kit.fontawesome.com/3cd2cb9097.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <header>
   <div class="navigation">
     <button id="backButton" class="back-button">
     <a href="PersonalPage.php?user_id=<?php echo $userId;?>"><i class="fa-solid fa-arrow-rotate-left" style="color: #472e3a;"></i></a>
     </button>
   </div>
-
+  </header>
   <div class="form-container">
-  <form action="index.php?user_id=<?php echo $userId; ?>" method="post" enctype="multipart/form-data">
-          <label for="productName">商品名</label>
-          <input type="text" id="productName" name="productName">
-        </div>
-        <div class="form-group">
-          <label>好き嫌い</label>
-          <div class="radio-group">
-            <label><input type="radio" id="like" name="preference" value="like">好き</label>
-            <label><input type="radio" id="dislike" name="preference" value="dislike">嫌い</label>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="comment">コメント</label>
-          <textarea id="comment" name="comment" rows="8"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="photo">写真</label>
-          <input type="file" id="photo" name="photo">
-        </div>
-        <button type="submit" class="submit-button">登録</button>
+    <form action="index.php?user_id=<?php echo $userId; ?>" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="productName">商品名</label>
+        <input type="text" id="productName" name="productName">
+    </div>
+    <div class="form-group">
+      <label>好き嫌い</label>
+      <div class="radio-group">
+        <label><input type="radio" id="like" name="preference" value="like">好き</label>
+        <label><input type="radio" id="dislike" name="preference" value="dislike">嫌い</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="comment">コメント</label>
+      <textarea id="comment" name="comment" rows="8"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="photo">写真</label>
+      <input type="file" id="photo" name="photo">
+    </div>
+    <button type="submit" class="submit-button">登録</button>
     </form>
   </div>
 

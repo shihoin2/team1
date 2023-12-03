@@ -7,8 +7,9 @@ require('common/dbconnect.php');
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>登録フォーム</title>
-<link rel="stylesheet" href="NameEntryPage/styles.css">
+<title>Add Person</title>
+<link rel="stylesheet" href="NameEntryPage/newstyles.css">
+<!-- <link rel="stylesheet" href="NameEntryPage/styles.css"> -->
 </head>
 <body>
 
